@@ -1,6 +1,8 @@
 // Theme definitions for Nerve UI
 
 export type ThemeName =
+  | 'simplyai-dark'
+  | 'simplyai-light'
   | 'midnight'
   | 'light'
   | 'phosphor'
@@ -23,6 +25,106 @@ export interface Theme {
 }
 
 export const themes: Record<ThemeName, Theme> = {
+  'simplyai-dark': {
+    name: 'simplyai-dark',
+    label: 'SimplyAi Dark',
+    colors: {
+      '--color-background': '#1A1714',
+      '--color-foreground': '#EDE6D8',
+      '--color-card': '#221E1A',
+      '--color-card-foreground': '#EDE6D8',
+      '--color-popover': '#221E1A',
+      '--color-popover-foreground': '#EDE6D8',
+      '--color-primary': '#D97757',
+      '--color-primary-foreground': '#1A1714',
+      '--color-secondary': '#2A2522',
+      '--color-secondary-foreground': '#EDE6D8',
+      '--color-muted': '#2A2522',
+      '--color-muted-foreground': '#9A8E7E',
+      '--color-accent': '#2A2522',
+      '--color-accent-foreground': '#EDE6D8',
+      '--color-destructive': '#E07261',
+      '--color-destructive-foreground': '#1A1714',
+      '--color-border': '#332D28',
+      '--color-input': '#332D28',
+      '--color-ring': '#D97757',
+      '--color-green': '#7FB071',
+      '--color-red': '#E07261',
+      '--color-orange': '#E89770',
+      '--color-purple': '#A899D6',
+      '--color-info': '#8AAFCB',
+      '--color-message-user': '#1F1B17',
+      '--color-message-assistant': '#1D1A18',
+      '--color-message-system': '#1F1C1A',
+      '--color-scrollbar': '#332D28',
+      '--color-scrollbar-hover': '#4A413A',
+      // Sidebar colors
+      '--color-sidebar': '#221E1A',
+      '--color-sidebar-foreground': '#EDE6D8',
+      '--color-sidebar-primary': '#D97757',
+      '--color-sidebar-primary-foreground': '#1A1714',
+      '--color-sidebar-accent': '#2A2522',
+      '--color-sidebar-accent-foreground': '#EDE6D8',
+      '--color-sidebar-border': '#332D28',
+      '--color-sidebar-ring': '#D97757',
+      // Chart colors — terracotta family
+      '--color-chart-1': '#D97757',
+      '--color-chart-2': '#7FB071',
+      '--color-chart-3': '#A899D6',
+      '--color-chart-4': '#E07261',
+      '--color-chart-5': '#8AAFCB',
+    },
+  },
+  'simplyai-light': {
+    name: 'simplyai-light',
+    label: 'SimplyAi Light',
+    colors: {
+      '--color-background': '#F5F0E8',
+      '--color-foreground': '#1F1B16',
+      '--color-card': '#FBF8F2',
+      '--color-card-foreground': '#1F1B16',
+      '--color-popover': '#FBF8F2',
+      '--color-popover-foreground': '#1F1B16',
+      '--color-primary': '#C2563A',
+      '--color-primary-foreground': '#FBF8F2',
+      '--color-secondary': '#EDE6D8',
+      '--color-secondary-foreground': '#1F1B16',
+      '--color-muted': '#EDE6D8',
+      '--color-muted-foreground': '#6B5F52',
+      '--color-accent': '#EDE6D8',
+      '--color-accent-foreground': '#1F1B16',
+      '--color-destructive': '#B0392E',
+      '--color-destructive-foreground': '#FBF8F2',
+      '--color-border': '#DDD3C2',
+      '--color-input': '#DDD3C2',
+      '--color-ring': '#C2563A',
+      '--color-green': '#4F7A48',
+      '--color-red': '#B0392E',
+      '--color-orange': '#D97757',
+      '--color-purple': '#6B5BA3',
+      '--color-info': '#5A7B9A',
+      '--color-message-user': '#EDE6D8',
+      '--color-message-assistant': '#FBF8F2',
+      '--color-message-system': '#F0EBE2',
+      '--color-scrollbar': '#DDD3C2',
+      '--color-scrollbar-hover': '#C8BBA6',
+      // Sidebar colors
+      '--color-sidebar': '#FBF8F2',
+      '--color-sidebar-foreground': '#1F1B16',
+      '--color-sidebar-primary': '#C2563A',
+      '--color-sidebar-primary-foreground': '#FBF8F2',
+      '--color-sidebar-accent': '#EDE6D8',
+      '--color-sidebar-accent-foreground': '#1F1B16',
+      '--color-sidebar-border': '#DDD3C2',
+      '--color-sidebar-ring': '#C2563A',
+      // Chart colors — terracotta family
+      '--color-chart-1': '#C2563A',
+      '--color-chart-2': '#4F7A48',
+      '--color-chart-3': '#6B5BA3',
+      '--color-chart-4': '#B0392E',
+      '--color-chart-5': '#5A7B9A',
+    },
+  },
   'midnight': {
     name: 'midnight',
     label: 'Midnight',
@@ -730,6 +832,8 @@ export const themeNames = Object.keys(themes) as ThemeName[];
 
 // Highlight.js theme mapping
 const hljsThemes: Record<ThemeName, string> = {
+  'simplyai-dark': 'github-dark-dimmed',
+  'simplyai-light': 'github',
   'midnight': 'github-dark-dimmed',
   'light': 'github',
   'phosphor': 'github-dark-dimmed',

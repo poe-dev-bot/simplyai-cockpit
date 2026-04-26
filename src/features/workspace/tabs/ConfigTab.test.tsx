@@ -152,7 +152,7 @@ describe('ConfigTab', () => {
     render(
       <ConfigTab
         agentId="alpha"
-        cronWarning="This gateway does not expose cron management, so Nerve can’t load or edit crons right now."
+        cronWarning="This gateway does not expose cron management, so SimplyAi can’t load or edit crons right now."
       />,
     );
 

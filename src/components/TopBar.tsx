@@ -17,10 +17,14 @@ import {
   Brain,
   MessageSquare,
   LayoutGrid,
+  Sun,
+  Moon,
 } from "lucide-react";
 import type { ViewMode } from "@/features/command-palette/commands";
 import type { AgentLogEntry, EventEntry, TokenData } from "@/types";
 import NerveLogo from "./NerveLogo";
+import { useSettings } from "@/contexts/SettingsContext";
+import { branding } from "@/branding.config";
 
 const AgentLog = lazy(() =>
   import("@/features/activity/AgentLog").then((m) => ({ default: m.AgentLog })),
@@ -113,9 +117,9 @@ interface TopBarProps {
 }
 
 /**
- * Top navigation bar for the Nerve cockpit.
+ * Top navigation bar for the SimplyAi cockpit.
  *
- * Displays the Nerve logo/brand, and provides toggle buttons for the
+ * Displays the SimplyAi logo/brand, and provides toggle buttons for the
  * Agent Log, Events, Token Usage, and (in compact mode) Sessions +
  * Workspace panels.
  */
@@ -137,6 +141,11 @@ export function TopBar({
   const [activePanel, setActivePanel] = useState<PanelId>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
+  const { theme, setTheme } = useSettings();
+  const isLightTheme = theme === branding.defaultLightTheme || theme === "light";
+  const toggleTheme = useCallback(() => {
+    setTheme(isLightTheme ? branding.defaultDarkTheme : branding.defaultLightTheme);
+  }, [isLightTheme, setTheme]);
 
   const togglePanel = useCallback((panel: PanelId) => {
     setActivePanel((prev) => (prev === panel ? null : panel));
@@ -241,11 +250,11 @@ export function TopBar({
           <div className="min-w-0">
             <div className="flex items-center gap-2">
               <span className="truncate text-sm font-semibold uppercase tracking-[0.34em] text-primary max-[371px]:text-xs max-[371px]:tracking-[0.22em] sm:text-base">
-                Nerve
+                {branding.name}
               </span>
             </div>
             <div className="hidden xl:block text-[0.733rem] text-muted-foreground/80">
-              OpenClaw Cockpit{" "}
+              {branding.tagline}{" "}
             </div>
           </div>
         </div>
@@ -377,6 +386,20 @@ export function TopBar({
               <span className="hidden rounded-full bg-background/80 px-2 py-0.5 text-[0.6rem] tabular-nums text-foreground/80 lg:inline-flex">
                 {totalCost}
               </span>
+            )}
+          </button>
+
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            title={isLightTheme ? "Switch to dark mode" : "Switch to light mode"}
+            aria-label={isLightTheme ? "Switch to dark mode" : "Switch to light mode"}
+            className="shell-icon-button size-11 px-0 max-[371px]:size-[38px] max-[371px]:[&_svg]:size-3 sm:size-10"
+          >
+            {isLightTheme ? (
+              <Moon size={14} aria-hidden="true" />
+            ) : (
+              <Sun size={14} aria-hidden="true" />
             )}
           </button>
 

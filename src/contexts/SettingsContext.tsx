@@ -3,6 +3,7 @@ import { createContext, useContext, useCallback, useRef, useState, useEffect, us
 import { useTTS, migrateTTSProvider, type TTSProvider } from '@/features/tts/useTTS';
 import { type ThemeName, applyTheme, themeNames } from '@/lib/themes';
 import { type FontName, applyFont, fontNames } from '@/lib/fonts';
+import { branding } from '@/branding.config';
 
 export type STTProvider = 'local' | 'openai';
 export type STTInputMode = 'browser' | 'local' | 'hybrid';
@@ -53,11 +54,33 @@ interface SettingsContextValue {
 }
 
 const SettingsContext = createContext<SettingsContextValue | null>(null);
-const FONT_REFRESH_STORAGE_KEY = 'nerve:font-refresh-20260312';
+const FONT_REFRESH_STORAGE_KEY = branding.fontRefreshKey;
+const THEME_REFRESH_STORAGE_KEY = branding.themeRefreshKey;
 const KANBAN_VISIBILITY_STORAGE_KEY = 'nerve:workspace:kanban-visible';
 const COMMAND_PALETTE_BUTTON_STORAGE_KEY = 'nerve:showChatboxCommandPaletteButton';
 const LEGACY_TOPBAR_COMMAND_PALETTE_BUTTON_STORAGE_KEY = 'nerve:showTopBarCommandPaletteButton';
 const LEGACY_COMPACT_COMMAND_PALETTE_BUTTON_STORAGE_KEY = 'nerve:showFloatingCommandPaletteButton';
+
+function resolveInitialTheme(): ThemeName {
+  const saved = localStorage.getItem('oc-theme') as ThemeName | null;
+  const hasRefreshedTheme = localStorage.getItem(THEME_REFRESH_STORAGE_KEY) === 'true';
+
+  if (!hasRefreshedTheme) {
+    // One-time migration to the configured brand theme, preserving dark/light
+    // intent. Users already on a brand theme (or monochrome) keep their choice.
+    localStorage.setItem(THEME_REFRESH_STORAGE_KEY, 'true');
+
+    if (saved === branding.defaultDarkTheme || saved === branding.defaultLightTheme || saved === 'monochrome') {
+      return saved;
+    }
+
+    const migrated: ThemeName = saved === 'light' ? branding.defaultLightTheme : branding.defaultDarkTheme;
+    localStorage.setItem('oc-theme', migrated);
+    return migrated;
+  }
+
+  return saved && themeNames.includes(saved) ? saved : branding.defaultDarkTheme;
+}
 
 const ALLOWED_FONT_SIZES = new Set([10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24]);
 const ALLOWED_EDITOR_FONT_SIZES = new Set([10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24]);
@@ -88,17 +111,20 @@ function resolveInitialFont(): FontName {
   const hasRefreshedFont = localStorage.getItem(FONT_REFRESH_STORAGE_KEY) === 'true';
 
   if (!hasRefreshedFont) {
-    const shouldAdoptInstrumentSans =
+    // One-time migration to the configured brand font. Preserve users who've
+    // explicitly picked a custom font (anything that isn't a stock default).
+    const shouldAdoptBrandFont =
       saved === null ||
+      saved === 'instrument-sans' ||
       saved === 'inter' ||
       saved === 'system' ||
       saved === 'jetbrains-mono';
 
     localStorage.setItem(FONT_REFRESH_STORAGE_KEY, 'true');
 
-    if (shouldAdoptInstrumentSans) {
-      localStorage.setItem('oc-font', 'instrument-sans');
-      return 'instrument-sans';
+    if (shouldAdoptBrandFont) {
+      localStorage.setItem('oc-font', branding.defaultFont);
+      return branding.defaultFont;
     }
 
     if (saved && fontNames.includes(saved as FontName)) {
@@ -106,7 +132,7 @@ function resolveInitialFont(): FontName {
     }
   }
 
-  return saved && fontNames.includes(saved as FontName) ? saved as FontName : 'instrument-sans';
+  return saved && fontNames.includes(saved as FontName) ? saved as FontName : branding.defaultFont;
 }
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
@@ -145,10 +171,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return localStorage.getItem('nerve:showHiddenWorkspaceEntries') === 'true';
   });
   const [commandPaletteButtonVisible, setCommandPaletteButtonVisible] = useState(resolveInitialCommandPaletteButtonVisible);
-  const [theme, setThemeState] = useState<ThemeName>(() => {
-    const saved = localStorage.getItem('oc-theme') as ThemeName | null;
-    return saved && themeNames.includes(saved) ? saved : 'ayu-dark';
-  });
+  const [theme, setThemeState] = useState<ThemeName>(resolveInitialTheme);
   const [font, setFontState] = useState<FontName>(resolveInitialFont);
   const [fontSize, setFontSizeState] = useState<number>(() => {
     const saved = localStorage.getItem('nerve:font-size');

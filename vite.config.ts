@@ -33,6 +33,7 @@ export default defineConfig({
     port,
     host: process.env.VITE_HOST || '127.0.0.1',
     https: httpsConfig,
+    allowedHosts: ['.ts.net', 'localhost', '127.0.0.1'],
     proxy: {
       '/api': apiTarget,
       '/ws': {

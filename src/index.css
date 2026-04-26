@@ -7,7 +7,7 @@
 /* Static (non-themeable) tokens */
 @theme {
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-  --font-sans: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
   --font-size-base: 15px;
 }
 
@@ -1375,48 +1375,48 @@
    themes.ts applyTheme() overrides these at runtime via element.style.setProperty(). */
 :root {
   --radius: 1.067rem;
-  --background: #0c1016;
-  --foreground: #d0c8bc;
-  --card: #10151d;
-  --card-foreground: #d0c8bc;
-  --popover: #10151d;
-  --popover-foreground: #d0c8bc;
-  --primary: #f0b35d;
-  --primary-foreground: #0c1016;
-  --secondary: #161c25;
-  --secondary-foreground: #d0c8bc;
-  --muted: #161c25;
-  --muted-foreground: #7e8794;
-  --accent: #161c25;
-  --accent-foreground: #d0c8bc;
-  --destructive: #e06c66;
-  --destructive-foreground: #d0c8bc;
-  --border: #27303c;
-  --input: #27303c;
-  --ring: #f0b35d;
-  --green: #7fc782;
-  --red: #e06c66;
-  --orange: #e79a59;
-  --purple: #b9acda;
-  --info: #7ea6c8;
-  --chart-1: #f0b35d;
-  --chart-2: #7fc782;
-  --chart-3: #b9acda;
-  --chart-4: #e06c66;
-  --chart-5: #7ea6c8;
-  --message-user: #141821;
-  --message-assistant: #121918;
-  --message-system: #131824;
-  --scrollbar: #27303c;
-  --scrollbar-hover: #36414f;
-  --sidebar: #10151d;
-  --sidebar-foreground: #d0c8bc;
-  --sidebar-primary: #f0b35d;
-  --sidebar-primary-foreground: #0c1016;
-  --sidebar-accent: #161c25;
-  --sidebar-accent-foreground: #d0c8bc;
-  --sidebar-border: #27303c;
-  --sidebar-ring: #f0b35d;
+  --background: #1a1818;
+  --foreground: #e8e0d8;
+  --card: #201e1c;
+  --card-foreground: #e8e0d8;
+  --popover: #201e1c;
+  --popover-foreground: #e8e0d8;
+  --primary: #c87941;
+  --primary-foreground: #1a1818;
+  --secondary: #282523;
+  --secondary-foreground: #e8e0d8;
+  --muted: #282523;
+  --muted-foreground: #8a8279;
+  --accent: #282523;
+  --accent-foreground: #e8e0d8;
+  --destructive: #d95555;
+  --destructive-foreground: #e8e0d8;
+  --border: #3a3530;
+  --input: #3a3530;
+  --ring: #c87941;
+  --green: #7ba87b;
+  --red: #d95555;
+  --orange: #c87941;
+  --purple: #a89ab5;
+  --info: #7a9eb5;
+  --chart-1: #c87941;
+  --chart-2: #7ba87b;
+  --chart-3: #a89ab5;
+  --chart-4: #d95555;
+  --chart-5: #7a9eb5;
+  --message-user: #222020;
+  --message-assistant: #1e1f1c;
+  --message-system: #201e22;
+  --scrollbar: #3a3530;
+  --scrollbar-hover: #4a4540;
+  --sidebar: #201e1c;
+  --sidebar-foreground: #e8e0d8;
+  --sidebar-primary: #c87941;
+  --sidebar-primary-foreground: #1a1818;
+  --sidebar-accent: #282523;
+  --sidebar-accent-foreground: #e8e0d8;
+  --sidebar-border: #3a3530;
+  --sidebar-ring: #c87941;
 }
 
 /* Activity indicator animations */

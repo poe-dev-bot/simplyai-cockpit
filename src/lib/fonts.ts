@@ -1,6 +1,6 @@
 // Font definitions for Nerve UI
 
-export type FontName = 'instrument-sans' | 'space-grotesk' | 'jetbrains-mono';
+export type FontName = 'source-serif' | 'inter' | 'instrument-sans' | 'space-grotesk' | 'jetbrains-mono';
 
 export interface Font {
   name: FontName;
@@ -10,6 +10,18 @@ export interface Font {
 }
 
 export const fonts: Record<FontName, Font> = {
+  'source-serif': {
+    name: 'source-serif',
+    label: 'Source Serif (SimplyAi)',
+    family: "'Source Serif 4', 'Source Serif Pro', 'Iowan Old Style', 'Apple Garamond', Georgia, serif",
+    googleFontsUrl: 'https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&display=swap',
+  },
+  'inter': {
+    name: 'inter',
+    label: 'Inter',
+    family: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+    googleFontsUrl: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+  },
   'instrument-sans': {
     name: 'instrument-sans',
     label: 'Instrument Sans',
@@ -70,5 +82,7 @@ export function applyFont(fontName: FontName): void {
 }
 
 // Initialize fonts used in the default shell before settings hydrate
+loadGoogleFont(fonts['source-serif'].googleFontsUrl!);
+loadGoogleFont(fonts['inter'].googleFontsUrl!);
 loadGoogleFont(fonts['instrument-sans'].googleFontsUrl!);
 loadGoogleFont(fonts['jetbrains-mono'].googleFontsUrl!);

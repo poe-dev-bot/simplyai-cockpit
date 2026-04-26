@@ -27,6 +27,8 @@ export interface CommandActions {
 }
 
 const THEME_LABELS: Record<ThemeName, string> = {
+  'simplyai-dark': 'SimplyAi Dark',
+  'simplyai-light': 'SimplyAi Light',
   'midnight': 'Midnight',
   'light': 'Light',
   'phosphor': 'Phosphor',
@@ -44,6 +46,8 @@ const THEME_LABELS: Record<ThemeName, string> = {
 };
 
 const FONT_LABELS: Record<FontName, string> = {
+  'source-serif': 'Source Serif',
+  'inter': 'Inter',
   'instrument-sans': 'Instrument Sans',
   'space-grotesk': 'Space Grotesk',
   'jetbrains-mono': 'JetBrains Mono',
