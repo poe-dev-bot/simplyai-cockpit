@@ -4,7 +4,7 @@
 # (Fork of Nerve, rebranded for SimplyAI / OpenClaw)
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/poe-dev-bot/simplyai-cockpit/master/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/poe-dev-bot/simplyai-cockpit/simplyai-main/install.sh | bash
 #
 # Or with options:
 #   curl -fsSL ... | bash -s -- --dir ~/nerve --version v1.4.4
@@ -31,7 +31,7 @@ trap cleanup EXIT
 
 # ── Defaults ──────────────────────────────────────────────────────────
 INSTALL_DIR="${NERVE_INSTALL_DIR:-${HOME}/nerve}"
-BRANCH="master"
+BRANCH="simplyai-main"
 BRANCH_EXPLICIT=false
 VERSION=""
 REPO="https://github.com/poe-dev-bot/simplyai-cockpit.git"
