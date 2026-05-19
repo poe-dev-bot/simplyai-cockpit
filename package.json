@@ -1,16 +1,16 @@
 {
-  "name": "openclaw-nerve",
+  "name": "simplyai-cockpit",
   "version": "1.5.3",
-  "description": "Web interface for OpenClaw — chat, voice input, TTS, and agent monitoring in the browser",
+  "description": "Web interface for OpenClaw — SimplyAI branded cockpit with chat, voice input, TTS, and agent monitoring",
   "license": "MIT",
   "engines": {
     "node": ">=22.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/daggerhashimoto/openclaw-nerve.git"
+    "url": "https://github.com/poe-dev-bot/simplyai-cockpit.git"
   },
-  "homepage": "https://github.com/daggerhashimoto/openclaw-nerve",
+  "homepage": "https://github.com/poe-dev-bot/simplyai-cockpit",
   "keywords": [
     "openclaw",
     "nerve",

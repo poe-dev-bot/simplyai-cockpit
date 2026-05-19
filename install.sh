@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # ──────────────────────────────────────────────────────────────────────
-# Nerve Installer — one-command setup for the Nerve web interface
+# SimplyAI Cockpit Installer — one-command setup for the SimplyAI Cockpit web interface
+# (Fork of Nerve, rebranded for SimplyAI / OpenClaw)
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/daggerhashimoto/openclaw-nerve/master/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/poe-dev-bot/simplyai-cockpit/master/install.sh | bash
 #
 # Or with options:
 #   curl -fsSL ... | bash -s -- --dir ~/nerve --version v1.4.4
@@ -33,7 +34,7 @@ INSTALL_DIR="${NERVE_INSTALL_DIR:-${HOME}/nerve}"
 BRANCH="master"
 BRANCH_EXPLICIT=false
 VERSION=""
-REPO="https://github.com/daggerhashimoto/openclaw-nerve.git"
+REPO="https://github.com/poe-dev-bot/simplyai-cockpit.git"
 NODE_MIN=22
 SKIP_SETUP=false
 DRY_RUN=false
